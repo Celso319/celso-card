@@ -111,38 +111,29 @@ function renderTechnologyIcons() {
     });
 }
 
-function createFloatingIcon(technology, index) {
+function createFloatingIcon(technology) {
   const wrapper = document.createElement("span");
   const image = createIconImage(technology);
 
-  const columns = 5;
-  const row = Math.floor(index / columns);
-  const column = index % columns;
-
-  const xBase = 5 + column * 22;
-  const yBase = 7 + row * 31;
-
-  const x = Math.min(92, xBase + Math.random() * 7);
-  const y = Math.min(88, yBase + Math.random() * 12);
-
+  const left = Math.round(Math.random() * 94);
   const size = 42 + Math.round(Math.random() * 28);
   const opacity = (0.12 + Math.random() * 0.11).toFixed(2);
-  const duration = 14 + Math.round(Math.random() * 12);
+
+  const duration = 28 + Math.round(Math.random() * 22);
   const delay = -Math.round(Math.random() * duration);
-  const driftX = Math.round(-35 + Math.random() * 70);
-  const driftY = Math.round(-45 + Math.random() * 25);
-  const rotationStart = Math.round(-7 + Math.random() * 14);
-  const rotationEnd = Math.round(-6 + Math.random() * 12);
+
+  const driftX = Math.round(-80 + Math.random() * 160);
+  const rotationStart = Math.round(-12 + Math.random() * 24);
+  const rotationEnd = Math.round(-20 + Math.random() * 40);
 
   wrapper.className = "floating-icon";
-  wrapper.style.left = `${x}%`;
-  wrapper.style.top = `${y}%`;
+
+  wrapper.style.setProperty("--left", `${left}%`);
   wrapper.style.setProperty("--size", `${size}px`);
   wrapper.style.setProperty("--opacity", opacity);
   wrapper.style.setProperty("--duration", `${duration}s`);
   wrapper.style.setProperty("--delay", `${delay}s`);
   wrapper.style.setProperty("--drift-x", `${driftX}px`);
-  wrapper.style.setProperty("--drift-y", `${driftY}px`);
   wrapper.style.setProperty("--rotation-start", `${rotationStart}deg`);
   wrapper.style.setProperty("--rotation-end", `${rotationEnd}deg`);
 

@@ -414,17 +414,21 @@ h1 {
 
 .floating-icon {
   position: absolute;
+  left: var(--left);
+  bottom: -6rem;
 
   width: var(--size);
   height: var(--size);
 
   opacity: var(--opacity);
+
   filter:
     drop-shadow(0 0.5rem 1rem rgba(0, 0, 0, 0.32))
     saturate(1.08);
 
   animation:
-    float-icon var(--duration) ease-in-out var(--delay) infinite alternate;
+    rise-icon var(--duration) linear var(--delay) infinite;
+
   will-change: transform;
 }
 
@@ -434,7 +438,7 @@ h1 {
   object-fit: contain;
 }
 
-@keyframes float-icon {
+@keyframes rise-icon {
   from {
     transform:
       translate3d(0, 0, 0)
@@ -443,7 +447,7 @@ h1 {
 
   to {
     transform:
-      translate3d(var(--drift-x), var(--drift-y), 0)
+      translate3d(var(--drift-x), calc(-100vh - 12rem), 0)
       rotate(var(--rotation-end));
   }
 }
